@@ -1,0 +1,103 @@
+<mvc:View 
+	controllerName="demo.variantfilter.controller.Main"
+	xmlns:core="sap.ui.core" 
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns="sap.m" 
+	xmlns:fb="sap.ui.comp.filterbar"   
+	xmlns:v="sap.ui.comp.smartvariants">
+	<v:SmartVariantManagementUi2 id="idSmartUi2Variant" />
+	<fb:FilterBar id="idFilterBar" 
+                  search="onFilterSearch" 
+                  useToolbar="false"
+                  showFilterConfiguration="false"
+                  showGoOnFB="true"
+                  persistencyKey="demo.variantfilter">
+		<fb:filterGroupItems>
+			<fb:FilterGroupItem name="Currency"
+			                    label="{/#VH_CurrencySet/Waers/@sap:label}"
+			                    groupName="__$INTERNAL$"
+			                    partOfCurrentVariant="true"
+			                    visibleInFilterBar="true">
+				<fb:control>
+					<MultiComboBox	selectionFinish="onFilterControlChange"
+									items="{/VH_CurrencySet}"
+									showSecondaryValues="true">
+						<core:ListItem key="{Waers}" text="{Ltext}" additionalText="{Waers}"/>
+					</MultiComboBox>
+				</fb:control>		
+			</fb:FilterGroupItem>	
+			<fb:FilterGroupItem name="Country"
+			                    label="{/#VH_CountrySet/Land1/@sap:label}"
+			                    groupName="__$INTERNAL$"
+			                    partOfCurrentVariant="true"
+			                    visibleInFilterBar="true">
+				<fb:control>
+					<MultiComboBox	selectionFinish="onFilterControlChange"
+									items="{/VH_CountrySet}"
+									showSecondaryValues="true">
+						<core:ListItem key="{Land1}" text="{Landx}" additionalText="{Land1}"/>
+					</MultiComboBox>
+				</fb:control>		
+			</fb:FilterGroupItem>	
+			<fb:FilterGroupItem name="BusinessPartner"
+			                    label="{/#BusinessPartnerSet/BusinessPartnerID/@sap:label}"
+			                    groupName="__$INTERNAL$"
+			                    partOfCurrentVariant="true"
+			                    visibleInFilterBar="true">
+				<fb:control>
+					<MultiComboBox	selectionFinish="onFilterControlChange"
+									items="{/BusinessPartnerSet}"
+									showSecondaryValues="true">
+						<core:ListItem key="{BusinessPartnerID}" text="{CompanyName}" additionalText="{BusinessPartnerID}"/>
+					</MultiComboBox>
+				</fb:control>		
+			</fb:FilterGroupItem>				
+			<fb:FilterGroupItem name="SalesOrder"
+			                    label="{/#SalesOrderSet/SalesOrderID/@sap:label}"
+			                    groupName="__$INTERNAL$"
+			                    partOfCurrentVariant="true"
+			                    visibleInFilterBar="true">
+				<fb:control>
+					<MultiComboBox	selectionFinish="onFilterControlChange"
+									items="{/SalesOrderSet}"
+									showSecondaryValues="true">
+						<core:ListItem key="{SalesOrderID}" text="{SalesOrderID}" additionalText="{CustomerID}"/>
+					</MultiComboBox>
+				</fb:control>		
+			</fb:FilterGroupItem>			
+			<!--
+			<fb:FilterGroupItem name="CompCode" 
+			                    label="Company Code"
+			                    groupName="__$INTERNAL$"
+			                    partOfCurrentVariant="true"
+			                    visibleInFilterBar="true">
+				<fb:control>
+						<MultiComboBox change="onChange" editable="{ui>/costcenters/isNotEdited}">
+							<items>
+								<core:Item key="GB02" text="GB02 - UK"/>
+								<core:Item key="IE02" text="IE02 - Ireland"/>
+								<core:Item key="FR02" text="FR02 - France"/>
+							</items>
+						</MultiComboBox>
+				</fb:control>		
+			</fb:FilterGroupItem>
+			<fb:FilterGroupItem name="Department" 
+			                    label="Department"
+			                    groupName="__$INTERNAL$"
+			                    partOfCurrentVariant="true"
+			                    visibleInFilterBar="true">
+				<fb:control>
+						<MultiComboBox change="onChange" editable="{ui>/costcenters/isNotEdited}">
+							<items>
+								<core:Item key="SALES" text="SALES"/>
+								<core:Item key="MARKETING" text="MARKETING"/>
+								<core:Item key="IT" text="IT"/>
+								<core:Item key="Central" text="Central"/>
+							</items>
+						</MultiComboBox>
+				</fb:control>		
+			</fb:FilterGroupItem>	
+			-->
+		</fb:filterGroupItems>
+	</fb:FilterBar>	
+</mvc:View>
