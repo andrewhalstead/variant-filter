@@ -27,7 +27,7 @@ sap.ui.define([
 			this.setModel(models.createDeviceModel(), "device");
 			
 			// set size of model lists to be 1000
-			var oModel = this.getModel();
+			const oModel = this.getModel();
 			oModel.setSizeLimit(1000);
 		}
 	});

@@ -6,30 +6,30 @@ sap.ui.define([
 
 	return Controller.extend("demo.variantfilter.controller.Main", {
 		onInit: function () {
-			let oFilterBar = this.getView().byId("idFilterBar");			
+			const oFilterBar = this.getView().byId("idFilterBar");			
 			oFilterBar.registerFetchData(this.getFilterBarData);
 			oFilterBar.registerApplyData(this.setFilterBarData);
-			let oPersInfo = new sap.ui.comp.smartvariants.PersonalizableInfo("idPersInfo", {
+			const oPersInfo = new sap.ui.comp.smartvariants.PersonalizableInfo("idPersInfo", {
 				keyName: "persistencyKey",
 				type:    "filterBar"
 			});
 			oPersInfo.setControl(oFilterBar);
-			let oSmartUi2Variant = this.getView().byId("idSmartUi2Variant");			
+			const oSmartUi2Variant = this.getView().byId("idSmartUi2Variant");			
 			oSmartUi2Variant.addPersonalizableControl(oPersInfo);
 			oSmartUi2Variant.initialise();
 		},
 		onFilterSearch: function(oEvent) {
-			let oFilterBar = this.byId("idFilterBar");	
-			let aFilters = this.getFiltersFromFilterBar(oFilterBar);
+			const oFilterBar = this.byId("idFilterBar");	
+			const aFilters = this.getFiltersFromFilterBar(oFilterBar);
 			// the end date returned by the date range selection control is the beginning of the month, so get the last day in the month
-			let oFilter = aFilters.find( f => f.sPath === "CreatedAt" );
+			const oFilter = aFilters.find( f => f.sPath === "CreatedAt" );
 			if (oFilter) {
-				let oToDate = oFilter.oValue2;
+				const oToDate = oFilter.oValue2;
 				oFilter.oValue2 = new Date(oToDate.getFullYear(), oToDate.getMonth() + 1, 0);
 			}
 			// bind the filters to the List 
-			let oList = this.byId("idSalesOrderList");	
-			let oBindingInfo = oList.getBindingInfo("items");
+			const oList = this.byId("idSalesOrderList");	
+			const oBindingInfo = oList.getBindingInfo("items");
 			if (!oBindingInfo.path) {
 				oList.bindItems({ 
 					path: "/SalesOrderSet",
@@ -37,12 +37,12 @@ sap.ui.define([
 					templateShareable: false,
 					filters: aFilters });
 			} else {					
-				let oListBinding = oList.getBinding("items");
+				const oListBinding = oList.getBinding("items");
 				oListBinding.filter(aFilters, sap.ui.model.FilterType.Application);
 			}
 		},
 		getFiltersFromFilterBar: function(oFilterBar) {
-			let oFilterItems = oFilterBar.getAllFilterItems(true);
+			const oFilterItems = oFilterBar.getAllFilterItems(true);
 			let aFilters = [];
 			oFilterItems.forEach( oFilterItem => {
 				let name = oFilterItem.getName();
@@ -72,7 +72,7 @@ sap.ui.define([
 		},			
 		getFilterBarData: function() {
 			let oData = {};
-			let aFilterItems = this.getAllFilterItems(true);
+			const aFilterItems = this.getAllFilterItems(true);
 			aFilterItems.forEach( oFilterItem => {
 				let name = oFilterItem.getName();
 				let oControl = this.determineControlByName(name);
@@ -121,9 +121,9 @@ sap.ui.define([
 			}	
 		},
 		onFilterControlChange: function(oEvent) {
-			let oControl = oEvent.getSource();
-			let oFilterBar = this.byId("idFilterBar");	
-			let oFilterItem = oFilterBar.getAllFilterItems(true).find( f => f.getControl() === oControl);
+			const oControl = oEvent.getSource();
+			const oFilterBar = this.byId("idFilterBar");	
+			const oFilterItem = oFilterBar.getAllFilterItems(true).find( f => f.getControl() === oControl);
 			let aSelectedKeys = [];
 			switch (oControl.getMetadata().getName()) {
 				case "sap.m.Select":
