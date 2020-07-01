@@ -1,0 +1,52 @@
+<core:FragmentDefinition xmlns="sap.m" 
+	                     xmlns:core="sap.ui.core"
+	                     xmlns:filterbar="sap.ui.comp.filterbar"
+	                     xmlns:smartvariants="sap.ui.comp.smartvariants">
+	<smartvariants:SmartVariantManagementUi2 id="idSmartUi2Variant" />
+	<filterbar:FilterBar id="idFilterBar" 
+                  search="onFilterSearch" 
+                  useToolbar="false"
+                  showFilterConfiguration="false"
+                  showGoOnFB="true"
+                  persistencyKey="demo.variantfilter">
+		<filterbar:filterGroupItems>
+			<filterbar:FilterGroupItem name="LifecycleStatus"
+			                           label="Status"
+			                           groupName="__$INTERNAL$"
+			                           partOfCurrentVariant="true"
+			                           visibleInFilterBar="true">
+				<filterbar:control>
+					<MultiComboBox selectionFinish="onFilterControlChange">
+						<core:Item key="P" text="In Progress"/>
+						<core:Item key="N" text="New"/>
+						<core:Item key="C" text="Closed"/>
+						<core:Item key="X" text="Cancelled"/>
+					</MultiComboBox>
+				</filterbar:control>		
+			</filterbar:FilterGroupItem>
+			<filterbar:FilterGroupItem name="CustomerID"
+			                           label="Customer"
+			                           groupName="__$INTERNAL$"
+			                           partOfCurrentVariant="true"
+			                           visibleInFilterBar="true">
+				<filterbar:control>
+					<MultiComboBox selectionFinish="onFilterControlChange"
+								   items="{/BusinessPartnerSet}"
+								   showSecondaryValues="true">
+						<core:ListItem key="{BusinessPartnerID}" text="{CompanyName}" additionalText="{BusinessPartnerID}"/>
+					</MultiComboBox>
+				</filterbar:control>		
+			</filterbar:FilterGroupItem>
+			<filterbar:FilterGroupItem name="CreatedAt"
+			                           label="Created"
+ 			                           groupName="__$INTERNAL$"
+         		                       partOfCurrentVariant="true"
+			                           visibleInFilterBar="true">
+				<filterbar:control>
+					<DateRangeSelection change="onFilterControlChange"
+					                    displayFormat="MM/yyyy"/>
+				</filterbar:control>		
+			</filterbar:FilterGroupItem>
+		</filterbar:filterGroupItems>
+	</filterbar:FilterBar>
+</core:FragmentDefinition>

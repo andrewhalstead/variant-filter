@@ -1,0 +1,35 @@
+{
+    "application": {
+        "id": "",
+        "title": "demo.variantfilter.variantfilter",
+        "description": "Variant Filter Demo",
+        "type": "SAP_UI5_Component",
+        "componentUrl": "/",
+        "appUrl": "#variantfilter-Display",
+        "navigationComponentName": "demo.variantfilter",
+        "intentSemanticObject": "variantfilter",
+        "intentAction": "Display",
+        "html5ApplicationName": "variantfilter",
+        "HCPParentApplicationName": ""
+    },
+    "assignment": {
+        "groups": [
+            "86623f83-4c80-4b98-8fd2-b37c3216b3f6"
+        ],
+        "contentPackages": [
+            "5bcf0042-27f9-4524-85de-0a5072fb1177"
+        ],
+        "categories": []
+    },
+    "tile": {
+        "type": "StaticTile",
+        "title": "Variant Filter Demo",
+        "subtitle": "",
+        "searchKeywords": "Variant Filter Demo,",
+        "displayIconUrl": "sap-icon://approvals",
+        "displayInfoText": "",
+        "size": "1x1",
+        "serviceURL": "",
+        "refreshInterval": ""
+    }
+}
